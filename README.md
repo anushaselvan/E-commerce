@@ -5,7 +5,7 @@ Team: Rau Manukau, Doss Anania, Mariane Thomson, Anusha Selvan
 Objective:
 To create a simple E-commerce application to sell preview and sell products online.
 
-
+    
 Basic outline:
 - homepage
 - signup form/ login
