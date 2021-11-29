@@ -20,18 +20,3 @@ Extras:
 
 
 Library - In research phase - not finalised yet.
-
-
-User requirements:
-When the user opens the application,
-the user should be presented with the homepage with products.
-When I see the homepage,
-I should be able to sign up/login.
-When I click signup,
-I should be presented with a form to sign up.
-When I am logged in,
-my search history for items should be saved.
-When I add a product to the cart,
-the cart should be updated.
-when I click checkout,
-checkout form should open.
