@@ -6,7 +6,7 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector("#password-signup").value.trim();
 
     if (name && email && password) {
-      const response = await fetch("/api/user", {
+      const response = await fetch("/api/users/signup", {
         method: "POST",
         body: JSON.stringify({ name, email, password }),
         headers: { "Content-Type": "application/json" },
@@ -28,14 +28,15 @@ const loginHandler = async (event) => {
   const email = document.querySelector("#login-email").value.trim();
   const password = document.querySelector("#login-password").value.trim();
 
-  const response = await fetch("/api/user/login", {
+  const response = await fetch("/api/users/login", {
     method: "POST",
     body: JSON.stringify({ email, password }),
     headers: { "Content-Type": "application/json" },
   });
 
   if (response.ok) {
-    document.location.replace("/dashboard");
+    // document.location.replace("/dashboard");
+    console.log(`logged in`);
   } else {
     alert(response.statusText);
   }
