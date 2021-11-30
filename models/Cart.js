@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
+// Cart means Order of the user
 class Cart extends Model {}
 
 Cart.init(
@@ -11,9 +11,25 @@ Cart.init(
       primaryKey: true,
       autoIncrement: true
     },
+    user_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
     user_name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    product_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: 'product',
+        key: 'id',
+      },
     },
     product_name: {
       type: DataTypes.STRING,

@@ -12,18 +12,17 @@ Product.belongsTo(Category, {
     foreignKey: 'category_id'
 });
 
-User.hasOne(Cart, {
-    foreignKey: 'user_name'
-
+User.hasMany(Cart, {
+    foreignKey: 'user_id'
 });
 
 Product.belongsToMany(User, {
     through: {
-      model: Cart,
-      unique: false
+      model: Cart,       
+      // unique: false
     },
     as: 'product_name'
-  });
+});
 
 module.exports = {
   Product,
