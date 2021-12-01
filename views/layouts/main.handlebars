@@ -12,7 +12,11 @@
     <nav>
         <a href="/">Hawaiki</a> 
         <a href="/products">Products</a>    
+        {{#if logged_in}}
+        <a href="#" id="logout">Logout</a>
+        {{else}}
         <a href="/login">Login</a>    
+        {{/if}}
     </nav>
     <main>
     {{{body}}}
@@ -22,6 +26,10 @@
           I'm a link 
       </p>  
     </footer>
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}
+
     </main>
 </body>
 </html>
