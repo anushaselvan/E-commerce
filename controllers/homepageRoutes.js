@@ -42,12 +42,15 @@ router.get("/products", async (req, res) => {
 
 router.get("/products/:id", async (req, res) => {
   try {
+    console.log(`product id hit`);
     const productData = await Product.findByPk(req.params.id, {
       
     });
     const product = productData.get({ plain: true });
     console.log(product);
-    res.render("product",  product, {
+    res.render("product",  
+    {
+    ...product, 
       logged_in: req.session.logged_in
     });
   } catch (err) {
