@@ -13,7 +13,8 @@ const signupFormHandler = async (event) => {
       });
       console.log(`fetch response: ` + JSON.stringify(response));
       if (response.ok) {
-        document.location.replace("/dashboard");
+        document.location.replace("/");
+        alert(`Signed up`);
       } else {
         alert(response.statusText);
       }
@@ -35,8 +36,9 @@ const loginHandler = async (event) => {
   });
 
   if (response.ok) {
-    // document.location.replace("/dashboard");
-    console.log(`logged in`);
+    document.location.replace("/");
+    // console.log(`logged in`);
+    alert(`logged in`);
   } else {
     alert(response.statusText);
   }
