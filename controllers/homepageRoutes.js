@@ -49,4 +49,14 @@ router.get("/products/:id", async (req, res) => {
   }
 });
 
+
+router.get("/checkout", (req, res) => {
+  try {
+    res.render("checkout", {});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;

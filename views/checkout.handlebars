@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <h1>Cart</h1>
+        <a href="/products"><h2>Continue Shopping</h2></a>
+    </div><table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+{{#each products as |product|}}
+  </tr>
+  <tr>
+    <td>  <img src="/images/{{product.filename}}" alt="{{product.filename}}"></td>
+    <td>{{product.product_title}}</td>
+    <td>{{product.price}}</td>
+        <td>{{product.product_quantity}}</td>
+    <td>{{total}}</td>
+{{/each}}
+  </tr>
+</table>
+
+    </div>    
+</div>
