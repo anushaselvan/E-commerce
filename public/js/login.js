@@ -36,11 +36,11 @@ const loginHandler = async (event) => {
   });
 
   if (response.ok) {
-    document.location.replace("/");
+    // document.location.replace("/");
     // console.log(`logged in`);
     alert(`logged in`);
   } else {
-    alert(response.statusText);
+    alert(`sorry not logged in`);
   }
 };
 
