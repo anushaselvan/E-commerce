@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hawaiki</title>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
     <nav>
-        <a href="/">Hawaiki</a> 
-        <a href="/products">Products</a>    
+        
+        <a href="/products">Shop</a>
+        <a href="/"><img src="/images/Hawaikilogo.png" alt="home-icon" height="150" width="150"></a>     
         {{#if logged_in}}
         <a href="#" id="logout">Logout</a>
         {{else}}
@@ -22,9 +24,11 @@
     {{{body}}}
 
     <footer>
-      <p>
-          I'm a link 
-      </p>  
+        <h1>Contact / Follow Us</h1>
+    <div>
+        <a href="https://www.facebook.com/hawaiki.kho/" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/hawaiki.kho/" class="fa fa-instagram"></a>
+    </div> 
     </footer>
 {{#if logged_in}}
 <script src="/js/logout.js"></script>

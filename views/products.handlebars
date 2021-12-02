@@ -1,16 +1,15 @@
-<div>
-    <h1>PRODUCTS</h1>
-</div>
-<div>
+<h1 class="shopTitle">Merchandise</h1>
+
+<div class="productsDiv">
 
 {{#each products as |product|}}
-    <div class="product-cards">
-        <div class="product-header">
+    <div class="productCard">
+        <div class="productHeader">
             <h1>{{product.product_title}}</h1>
-            <h2>{{product.price}}</h2>
+            <h2 class="price">${{product.price}}</h2>
         </div>
         <a href="./products/{{product.id}}">
-        <img src="./images/{{product.filename}}" alt="{{product.filename}}">
+        <img class="productImg" src="./images/{{product.filename}}" alt="{{product.filename}}">
         </a>
     </div>
 {{/each}}
