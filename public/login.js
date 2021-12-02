@@ -1,15 +1,16 @@
 // const $ = require('jquery');
 window.onload = function(){
-const modal = $('#modal').iziModal();
+$('#modal').iziModal();
 
 $(document).on('click', '#modal', function (event) {
   event.preventDefault();
+  console.log(clicked);
   // $('#modal').iziModal('setZindex', 99999);
   // $('#modal').iziModal('open', { zindex: 99999 });
-  $('#modal').iziModal('open', {
-    transitionIn: 'bounceInDown',
-    transitionOut: 'bounceOutDown' // TransitionOut will be applied if you have any open modal.
-  });
+  $('#modal').iziModal('open' //{
+    // transitionIn: 'bounceInDown',
+    // transitionOut: 'bounceOutDown' // TransitionOut will be applied if you have any open modal.
+  );
 });
 
 }

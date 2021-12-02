@@ -18,17 +18,17 @@
         <a href="/products">Products</a>    
         {{!-- <a href="/login" class="trigger" data-izimodal-open="#modal">login</a> --}}
         <a href="/checkout">Checkout</a>    
-        <div id="modal"></div>
         
         {{!-- <a href="/products">Shop</a> --}}
         <a href="/"><img src="/images/Hawaikilogo.png" alt="home-icon" height="150" width="150"></a>     
         {{#if logged_in}}
         <a href="#" id="logout">Logout</a>
         {{else}}
-        <a href="/login">Login</a>    
+        <a href="#" data-izimodal-open="#modal">Login</a>    
         {{/if}}
     </nav>
     <main>
+        <div id="modal"><a href="#">Modal</a></div>
     {{{body}}}
 
     <footer>
