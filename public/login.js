@@ -1,5 +1,6 @@
-var modal = $('#modal').iziModal();
-
+// const $ = require('jquery');
+window.onload = function(){
+const modal = $('#modal').iziModal();
 
 $(document).on('click', '#modal', function (event) {
   event.preventDefault();
@@ -8,9 +9,10 @@ $(document).on('click', '#modal', function (event) {
   $('#modal').iziModal('open', {
     transitionIn: 'bounceInDown',
     transitionOut: 'bounceOutDown' // TransitionOut will be applied if you have any open modal.
-});
+  });
 });
 
+}
 /*
 
 
