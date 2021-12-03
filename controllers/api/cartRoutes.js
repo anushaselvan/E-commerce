@@ -56,7 +56,7 @@ const cardItemId = ""
     }
   });
 
-  router.delete("/", withAuth, async (req, res) => {
+  router.delete("/",  async (req, res) => {
     // we expect the body to have a cart id
     console.log(`cartRoutes hit`, req.body);
     const cardItemId = ""

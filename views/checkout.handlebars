@@ -1,25 +1,40 @@
 <div>
-    <div>
-        <h1>Cart</h1>
+    <div class="checkoutHeader">
+        <h1 >Cart</h1>
         <a href="/products"><h2>Continue Shopping</h2></a>
-    </div><table>
+    </div>
+    <table>
   <tr>
-    <th></th>
-    <th></th>
+    <th>Product</th>
+    <th style="width:45%">Name</th>
     <th>Price</th>
     <th>Quantity</th>
     <th>Total</th>
+    </tr>
 {{#each products as |product|}}
-  </tr>
   <tr>
     <td>  <img src="/images/{{product.filename}}" alt="{{product.filename}}"></td>
     <td>{{product.product_title}}</td>
     <td>{{product.price}}</td>
-        <td>{{product.product_quantity}}</td>
+        <td><input type="number" id="quantity" name="quantity"
+       min="1" max="100" value='{{product.product_quantity}}'>
+          <button id="removeBtn">Remove</button>
+        </td>
     <td>{{total}}</td>
-{{/each}}
+  </tr>
+  {{/each}}
+  <tr style="border-bottom: white;">
+    <td>  </td>
+    <td>  </td>
+        <td>  </td>
+
+    <td><h3>Subtotal:</h3></td>
+    <td>{{Subtotal}}</td>
   </tr>
 </table>
-
-    </div>    
+<div class="btnGroup">
+<button id="updateCartBtn">Update Cart</button>
+<button id="checkoutBtn">Checkout</button>
+</div>
+  </div>    
 </div>

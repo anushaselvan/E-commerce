@@ -259,6 +259,7 @@ body{
   } */
    
 /* Rua's CSS */
+
 footer h1 {
     opacity: .8;
     text-align: center;
@@ -414,3 +415,32 @@ footer h1 {
     }
 
 }
+
+
+/* CSS for Checkout page */
+.checkoutHeader{
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+  }
+  tr {
+    border-bottom: 1px solid #ddd;
+  }
+  tr h3{
+      font-size: larger;
+  }
+  .btnGroup{
+      margin:10px 40px;
+      text-align: right;
+  }
+  button {
+      padding: 5px 20px;
+      border-radius: 10px;
+      background-color:var(--sea);
+      color: black;
+      font-size: large;
+      font-family: 'Permanent Marker', cursive;
+  }
