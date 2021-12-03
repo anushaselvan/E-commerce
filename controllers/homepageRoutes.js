@@ -61,7 +61,9 @@ router.get("/products/:id", async (req, res) => {
 
 router.get("/checkout", (req, res) => {
   try {
-    res.render("checkout", {});
+    res.render("checkout", {
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
