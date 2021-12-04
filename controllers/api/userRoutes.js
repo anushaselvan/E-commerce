@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
     
     if (!userData || !validPassword) {
-      req
+      res
       .status(400)
       .json({ message: "Incorrect email or password, please try again" });
       return;
@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
