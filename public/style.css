@@ -1,416 +1,379 @@
-
 :root {
-    --sea:rgb(116, 219, 205);
+  --sea: rgb(116, 219, 205);
 }
 body {
-    margin-left: 50px;
-    margin-right: 50px;
-    font-family: 'Permanent Marker', cursive;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: "Permanent Marker", cursive;
 }
 nav {
-    display: flex;
-    text-decoration: none;
-    justify-content:space-around;
-    font-size: 3rem;
-    margin: 0px 50px 0px 50px;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-around;
+  font-size: 3rem;
+  margin: 0px 50px 0px 50px;
 }
- nav a {
-     text-decoration: none;
-     text-align: center;
-     color: black;
-     opacity: .8;
+nav a {
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  opacity: 0.8;
 }
 
 nav a:hover {
-    text-shadow: 5px 5px var(--sea);
+  text-shadow: 5px 5px var(--sea);
 }
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    font-family: 'Permanent Marker', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: "Permanent Marker", cursive;
 }
 
 
-/*
-html, body, div, span, applet, object, iframe, h1, h2, h3,
-h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
-address, big, cite, code, del, dfn, em, font, img, ins,
-kbd, q, s, samp, small, strike, strong, sub, sup, tt,
-var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+.hide{
+  display: none;
+}
+
+.trigger-custom{
+  padding:10px 20px;
+  border-radius:3px;
+  border:0;
+  background:#ccc;
+  font-size:14px;
+  border-top:1px solid #FFF;
+  border-bottom:1px solid #aaa;
+  cursor:pointer;
+}
+.trigger-custom:hover{
+  background:#d5d5d5;
+}
+
+#modal-custom .iziModal-content header{
+    background: #eee;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+    width: 100%;
+}
+#modal-custom .iziModal-content header a{
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 0;
+    text-align: center;
+    background: #ddd;
+    color: #999;
+    height: 73px;
+    line-height: 73px;
+}
+#modal-custom .iziModal-content header a.active{
+    background: #fff;
+    color: #777;
+}
+#modal-custom .iziModal-content section{
+    padding: 30px;
+}
+#modal-custom .iziModal-content section input:not([type="checkbox"]), #modal-custom .iziModal-content section button{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    margin-bottom: 26px;
+    padding: 15px;
+    font-size: 14px;
+}
+#modal-custom .iziModal-content section button{
+  height: 46px;
+  padding: 0;
+}
+#modal-custom .iziModal-content section input:focus{
+    border-color:#28CA97;
+}
+#modal-custom .iziModal-content section label[for="check"]{
+    margin-bottom: 26px;
+    font-size: 14px;
+    color: #999;
+    display: block;
+}
+#modal-custom .iziModal-content section footer{
+    overflow: hidden;
+}
+#modal-custom .iziModal-content section button{
+    background: #28CA97;
+    color: white;
     margin: 0;
-    padding: 0;
     border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
+    cursor: pointer;
+    width: 50%;
+    float: left;
 }
-:focus { outline: 0;}
-a:link, a:visited, a:active{text-decoration:none; color: #21b3b4}
-table {	border-collapse: separate;border-spacing: 0; width: 100%;}
-th, td {text-align: left; font-weight: normal;}
-tr{line-height: 30px;}
-img, iframe {border: none; text-decoration:none;}
-ol, ul {list-style: none;}
-input, textarea, select, button {font-size: 100%;font-family: inherit;}
-*, *:after, *::before{box-sizing:border-box; -ms-box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
-body{
-    font-family: arial;
-    background: #F0F2F1;
-    overflow-x:hidden;
-    padding:20px;
+#modal-custom .iziModal-content section button:hover{
+    opacity: 0.8;
+}
+#modal-custom .iziModal-content section button:nth-child(2){
+    border-radius: 3px 0 0 3px;
+    background: #aaa;
+}
+#modal-custom .iziModal-content section button:nth-child(1){
+    border-radius: 0 3px 3px 0;
+}
+
+#modal-custom .iziModal-content .icon-close{
+    background: #FFF;
+    margin-bottom: 10px;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    color: #a9a9a9;
+    cursor: pointer;
+}
+#modal-custom .iziModal-content .icon-close:hover, #modal-custom .iziModal-content .icon-close:focus{
+  color: black;
+}
+
+
+
+
+
+@-webkit-keyframes wobble {
+  from {
+    -webkit-transform: none;
+    transform: none;
   }
-  .hide{
-    display: none;
+
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
   }
-  
-  .trigger-custom{
-    padding:10px 20px;
-    border-radius:3px;
-    border:0;
-    background:#ccc;
-    font-size:14px;
-    border-top:1px solid #FFF;
-    border-bottom:1px solid #aaa;
-    cursor:pointer;
+
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
   }
-  .trigger-custom:hover{
-    background:#d5d5d5;
+
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
   }
-  
-  #modal-custom .iziModal-content header{
-      background: #eee;
-      margin-bottom: 10px;
-      overflow: hidden;
-      border-radius: 3px 3px 0 0;
-      width: 100%;
+
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
   }
-  #modal-custom .iziModal-content header a{
-      display: block;
-      float: left;
-      width: 50%;
-      padding: 0;
-      text-align: center;
-      background: #ddd;
-      color: #999;
-      height: 73px;
-      line-height: 73px;
+
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
   }
-  #modal-custom .iziModal-content header a.active{
-      background: #fff;
-      color: #777;
+
+  to {
+    -webkit-transform: none;
+    transform: none;
   }
-  #modal-custom .iziModal-content section{
-      padding: 30px;
+}
+
+@keyframes wobble {
+  from {
+    -webkit-transform: none;
+    transform: none;
   }
-  #modal-custom .iziModal-content section input:not([type="checkbox"]), #modal-custom .iziModal-content section button{
-      width: 100%;
-      border-radius: 3px;
-      border: 1px solid #ddd;
-      margin-bottom: 26px;
-      padding: 15px;
-      font-size: 14px;
+
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
   }
-  #modal-custom .iziModal-content section button{
-    height: 46px;
-    padding: 0;
+
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
   }
-  #modal-custom .iziModal-content section input:focus{
-      border-color:#28CA97;
+
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
   }
-  #modal-custom .iziModal-content section label[for="check"]{
-      margin-bottom: 26px;
-      font-size: 14px;
-      color: #999;
-      display: block;
+
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
   }
-  #modal-custom .iziModal-content section footer{
-      overflow: hidden;
+
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
   }
-  #modal-custom .iziModal-content section button{
-      background: #28CA97;
-      color: white;
-      margin: 0;
-      border: 0;
-      cursor: pointer;
-      width: 50%;
-      float: left;
+
+  to {
+    -webkit-transform: none;
+    transform: none;
   }
-  #modal-custom .iziModal-content section button:hover{
-      opacity: 0.8;
-  }
-  #modal-custom .iziModal-content section button:nth-child(1){
-      border-radius: 3px 0 0 3px;
-      background: #aaa;
-  }
-  #modal-custom .iziModal-content section button:nth-child(2){
-      border-radius: 0 3px 3px 0;
-  }
-  
-  #modal-custom .iziModal-content .icon-close{
-      background: #FFF;
-      margin-bottom: 10px;
-      position: absolute;
-      right: -8px;
-      top: -8px;
-      font-size: 14px;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      border: 0;
-      color: #a9a9a9;
-      cursor: pointer;
-  }
-  #modal-custom .iziModal-content .icon-close:hover, #modal-custom .iziModal-content .icon-close:focus{
-    color: black;
-  }
-  
-  
-  
-  
-  
-  @-webkit-keyframes wobble {
-    from {
-      -webkit-transform: none;
-      transform: none;
-    }
-  
-    15% {
-      -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
-      transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
-    }
-  
-    30% {
-      -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
-      transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
-    }
-  
-    45% {
-      -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
-      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
-    }
-  
-    60% {
-      -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
-      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
-    }
-  
-    75% {
-      -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
-      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
-    }
-  
-    to {
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-  
-  @keyframes wobble {
-    from {
-      -webkit-transform: none;
-      transform: none;
-    }
-  
-    15% {
-      -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
-      transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
-    }
-  
-    30% {
-      -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
-      transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
-    }
-  
-    45% {
-      -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
-      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
-    }
-  
-    60% {
-      -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
-      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
-    }
-  
-    75% {
-      -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
-      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
-    }
-  
-    to {
-      -webkit-transform: none;
-      transform: none;
-    }
-  }
-  
-  .wobble {
-    -webkit-animation-name: wobble;
-    animation-name: wobble;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  } */
-   
+}
+
+.wobble {
+  -webkit-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+} 
+
 /* Rua's CSS */
 footer h1 {
-    opacity: .8;
-    text-align: center;
+  opacity: 0.8;
+  text-align: center;
 }
 .fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin: 5px 2px;
-    border-radius: 50%;
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
 }
 .fa:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 .fa-facebook {
-  background: #3B5998;
+  background: #3b5998;
   color: white;
 }
 .fa-instagram {
-    background: #125688;
-    color: white;
+  background: #125688;
+  color: white;
 }
 .homepageHero {
-    display:flex;
-    flex-direction: column;
-    align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homepageImg {
-    border-radius: 50px 50px 50px 50px;
-    height:700px;
-    width: 900px;
-    box-shadow: 0px 0px 25px var(--sea);
+  border-radius: 50px 50px 50px 50px;
+  height: 700px;
+  width: 900px;
+  box-shadow: 0px 0px 25px var(--sea);
 }
 .homepageHeader {
-    opacity: .8;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    margin: 20px 50px 20px 50px;
-
+  opacity: 0.8;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  margin: 20px 50px 20px 50px;
 }
 
 .shopTitle {
-    text-shadow: 4px 4px var(--sea);
-    text-align: center;
-    font-size: 3rem;
-    opacity: .8;
+  text-shadow: 4px 4px var(--sea);
+  text-align: center;
+  font-size: 3rem;
+  opacity: 0.8;
 }
 .productsDiv {
-    display: grid;  
-    grid-template-columns: auto auto;
-    grid-gap: 50px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 50px;
 }
 
 .productImg {
-    border-radius: 50px 50px 50px 50px;
-    width: 350px;
-    height: 350px;
+  border-radius: 50px 50px 50px 50px;
+  width: 350px;
+  height: 350px;
 }
 .productHeader {
-    opacity: .8;
+  opacity: 0.8;
 }
 .price {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
 }
 .itemDescription p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0;
 }
 .itemDescription {
-    margin-left: 40px;
-    margin-right: 50px;
+  margin-left: 40px;
+  margin-right: 50px;
 }
 .itemDescription h3 {
-    font-size: 1.5rem;
-    margin: 5px;
+  font-size: 1.5rem;
+  margin: 5px;
 }
 .itemImg {
-    border-radius: 50px;
-    height: 600px;
-    width: 600px;
+  border-radius: 50px;
+  height: 600px;
+  width: 600px;
 }
 
-@media  screen and (max-width: 700px) {
-    .homepageImg {
-        width: 100%;
-        height: max-content;
-        border-radius: 0;
-        box-shadow: none;
-    }
-    body {
-        margin: 0;
-    }
-    nav {
-        margin: 0;
-    }
-    nav a {
-        font-size: 1.5rem;
-    }
-    footer {
-        margin: 50px 30px 20px 30px;
-    }
-    footer h1 {
-        font-size: 1.5rem;
-    }
-    .productImg {
-        width: 100%;
-        height:max-content;
-    }
-    .productHeader h1 {
-        font-size: 1.5rem;
-    }
-    .itemImg {
-        width: 100%;
-        height: max-content;
-        border-radius: 0;
-    }
-    .itemDescription {
-        margin: 20px 30px 20px 30px;
-    }
-    .shopTitle {
-        font-size: 2rem;
-        text-shadow: 2px 2px var(--sea);
-        margin:20px;
-    }
+@media screen and (max-width: 700px) {
+  .homepageImg {
+    width: 100%;
+    height: max-content;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  body {
+    margin: 0;
+  }
+  nav {
+    margin: 0;
+  }
+  nav a {
+    font-size: 1.5rem;
+  }
+  footer {
+    margin: 50px 30px 20px 30px;
+  }
+  footer h1 {
+    font-size: 1.5rem;
+  }
+  .productImg {
+    width: 100%;
+    height: max-content;
+  }
+  .productHeader h1 {
+    font-size: 1.5rem;
+  }
+  .itemImg {
+    width: 100%;
+    height: max-content;
+    border-radius: 0;
+  }
+  .itemDescription {
+    margin: 20px 30px 20px 30px;
+  }
+  .shopTitle {
+    font-size: 2rem;
+    text-shadow: 2px 2px var(--sea);
+    margin: 20px;
+  }
 }
 
-@media  screen and (min-width: 700px) {
-    .productCard {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .itemDiv {
-        display: flex;
-        flex-direction: row;
-    }
-
+@media screen and (min-width: 700px) {
+  .productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .itemDiv {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
-@media  screen and (max-width: 1500px) {
-    .productsDiv {
-        display: flex;  
-        flex-direction: column;
-        justify-content: center;
-        margin: 20px 30px 20px 30px;
-   
-    }
-
+@media screen and (max-width: 1500px) {
+  .productsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 30px 20px 30px;
+  }
 }
