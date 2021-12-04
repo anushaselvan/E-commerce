@@ -1,3 +1,4 @@
+
 function initIziAlert(title) {
   $("#modal-alert").iziModal('destroy')
   $("#modal-alert").iziModal({
@@ -15,16 +16,13 @@ function initIziAlert(title) {
 }
 
 const logout = async () => {
-  console.log(`clicked`);
     const response = await fetch('/api/users/logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
-      initIziAlert('Logged Out')
-      // document.location.reload();
-      // alert(`logged out`);
+      initIziAlert('Logging Out')
     } else {
       initIziAlert(response.statusText);
     }
