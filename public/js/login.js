@@ -40,14 +40,14 @@ const loginHandler = async (event) => {
     // console.log(`logged in`);
     alert(`logged in`);
   } else {
-    alert(response.statusText);
+    alert(`sorry not logged in`);
   }
 };
 
 document
-  .querySelector(".signup-form")
+  .querySelector("#signup-form")
   .addEventListener("submit", signupFormHandler);
 
 document
-  .querySelector(".login-form")
+  .querySelector("#login-form")
   .addEventListener("submit", loginHandler);

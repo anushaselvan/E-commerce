@@ -33,20 +33,20 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  // console.log(`login userRoutes hit`);
+  console.log(`login userRoutes hit`);
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
     const validPassword = await userData.checkPassword(req.body.password);
-
+    
     if (!userData || !validPassword) {
       res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+      .status(400)
+      .json({ message: "Incorrect email or password, please try again" });
       return;
     }
-
+    
     // if (!validPassword) {
-    //   res
+    //   req
     //     .status(400)
     //     .json({ message: "Incorrect email or password, please try again" });
     //   return;
@@ -59,7 +59,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 

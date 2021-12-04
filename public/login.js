@@ -15,105 +15,133 @@ $(document).on('click', '#modal', function (event) {
 
 
 $('#modal').iziModal('setWidth', 800); // '800px', 100%, '100vw'...
+// function that reinitializes an alert modal
+//  with the text passed through
+function initIziAlert(title) {
+  // clear any previous instance of the alert modal
+  $("#modal-alert").iziModal('destroy')
+  // initialize a fresh alert modal with title passed through
+  $("#modal-alert").iziModal({
+    title,
+    timeout: 1500,
+    timeoutProgressbar: true,
+    timeoutProgressbarColor: "rgba(255,255,255,0.5)",
+    width: 300,    
+    onClosing: function () {  // reloads page
+      document.location.reload();
+    },
+    
+  });
+  $("#modal-alert").iziModal('open')
+}
+// force the file to wait for page to load
+// then jQuery can be used
+window.onload = function () {
+// init login modal
+  $("#modal-custom").iziModal({
+    tranitionOut: "comingOut",
+  });
 
 
-$(document).on('click', '.trigger', function (event) {
+// click events for login/signup header
+  $("#modal-custom").on("click", "header a", function (event) {
     event.preventDefault();
-    // $('#modal').iziModal('setZindex', 99999);
-    // $('#modal').iziModal('open', { zindex: 99999 });
-    $('#modal').iziModal('open');
-});
+    const index = $(this).index();
+    $(this).addClass("active").siblings("a").removeClass("active");
+    $(this)
+      .parents("div")
+      .find("section")
+      .eq(index)
+      .removeClass("hide")
+      .siblings("section")
+      .addClass("hide");
 
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-    // Collect values from the login form
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
-      // Send a POST request to the API endpoint
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        // If successful, redirect the browser to the profile page
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+    if ($(this).index() === 0) {
+      $("#modal-custom .iziModal-content .icon-close").css(
+        "background",
+        "#ddd"
+      );
+    } else {
+      $("#modal-custom .iziModal-content .icon-close").attr("style", "");
     }
-  };
-  
-  const signupFormHandler = async (event) => {
+  });
+// click events for signing up
+  $("#modal-custom").on("submit", "#signup-form", async function (event) {
     event.preventDefault();
-  
-    const name = document.querySelector('#name-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-  
+    try {
+    const name = document.querySelector("#username-signup").value.trim();
+    const email = document.querySelector("#email-signup").value.trim();
+    const password = document.querySelector("#password-signup").value.trim();
+
     if (name && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
+      const response = await fetch("/api/users/signup", {
+        method: "POST",
         body: JSON.stringify({ name, email, password }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "Content-Type": "application/json" },
       });
-  
+      console.log(`fetch response: `, response);
       if (response.ok) {
-        document.location.replace('/profile');
+        $("#modal-custom").iziModal("close");
+        initIziAlert('Welcome')
       } else {
-        alert(response.statusText);
+      }
+    } else {
+      const fx = "wobble", //wobble shake
+        $modal = $(this).closest(".iziModal");
+
+      if (!$modal.hasClass(fx)) {
+        $modal.addClass(fx);
+        setTimeout(function () {
+          $modal.removeClass(fx);
+        }, 1500);
       }
     }
-  };
-  
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+    } catch (err) {
+      console.error(err);
+    }
+  });
 
-    $(function(){
+  $("#modal-custom").on("submit", "#login-form", async function (event) {
+    console.log(`clicked login`);
 
-      $("#modal-custom").iziModal({
-          overlayClose: false,
-          overlayColor: 'rgba(0, 0, 0, 0.6)'
+    event.preventDefault();
+  
+    const email = document.querySelector("#login-email").value.trim();
+    const password = document.querySelector("#login-password").value.trim();
+
+    if (email && password) {
+
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
       });
-    
-      
-    
-      $("#modal-custom").on('click', 'header a', function(event) {
-          event.preventDefault();
-          var index = $(this).index();
-          $(this).addClass('active').siblings('a').removeClass('active');
-          $(this).parents("div").find("section").eq(index).removeClass('hide').siblings('section').addClass('hide');
-    
-          if( $(this).index() === 0 ){
-              $("#modal-custom .iziModal-content .icon-close").css('background', '#ddd');
-          } else {
-              $("#modal-custom .iziModal-content .icon-close").attr('style', '');
-          }
-      });
-    
-      $("#modal-custom").on('click', '.submit', function(event) {
-          event.preventDefault();
-    
-          var fx = "wobble",  //wobble shake
-              $modal = $(this).closest('.iziModal');
-    
-          if( !$modal.hasClass(fx) ){
-              $modal.addClass(fx);
-              setTimeout(function(){
-                  $modal.removeClass(fx);
-              }, 1500);
-          }
-      }); 
-      
-    })
-      */
+      console.log(response);
+      if (response.ok) {
+        $("#modal-custom").iziModal("close");
+        initIziAlert('Welcome Back')
+      } else {
+        // alert(`sorry not logged in`);
+        const fx = "wobble", //wobble shake
+          $modal = $(this).closest(".iziModal");
+
+        if (!$modal.hasClass(fx)) {
+          $modal.addClass(fx);
+          setTimeout(function () {
+            $modal.removeClass(fx);
+          }, 1500);
+        }
+      }
+    } else {
+      const fx = "wobble", //wobble shake
+        $modal = $(this).closest(".iziModal");
+
+      if (!$modal.hasClass(fx)) {
+        $modal.addClass(fx);
+        setTimeout(function () {
+          $modal.removeClass(fx);
+        }, 1500);
+      }
+    }
+  });
+};
