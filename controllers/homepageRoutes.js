@@ -30,7 +30,7 @@ router.get("/products", async (req, res) => {
     );    
     const products = productData.map((product) => product.get({ plain: true }));
 
-    console.log()
+   // console.log()
     res.render("products", { 
       products,
       logged_in: req.session.logged_in

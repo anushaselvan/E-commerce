@@ -1,3 +1,20 @@
+/*var modal = $('#modal').iziModal();
+
+
+$(document).on('click', '#modal', function (event) {
+  event.preventDefault();
+  // $('#modal').iziModal('setZindex', 99999);
+  // $('#modal').iziModal('open', { zindex: 99999 });
+  $('#modal').iziModal('open', {
+    transitionIn: 'bounceInDown',
+    transitionOut: 'bounceOutDown' // TransitionOut will be applied if you have any open modal.
+});
+});
+
+/*
+
+
+$('#modal').iziModal('setWidth', 800); // '800px', 100%, '100vw'...
 // function that reinitializes an alert modal
 //  with the text passed through
 function initIziAlert(title) {
