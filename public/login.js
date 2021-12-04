@@ -1,4 +1,4 @@
-var modal = $('#modal').iziModal();
+/*var modal = $('#modal').iziModal();
 
 
 $(document).on('click', '#modal', function (event) {

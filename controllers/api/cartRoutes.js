@@ -22,7 +22,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
     // we expect the body to have a cart id
     console.log(`cartRoutes post hit`, req.body);
-    const productId = req.body
+    const productId = req.body;
+    console.log(productId+`checkoutpageerrordebuggingstatement`)
     const userId = req.session.user_id
     try {
       
@@ -31,7 +32,7 @@ router.post("/", async (req, res) => {
             productId,  
         })
   
-      console.log()
+     // console.log()
       res.status(200).json(newCartItem);
     } catch (err) {
       res.status(500).json(err);
@@ -49,7 +50,7 @@ const cardItemId = ""
             ...req.body
         })
   
-      console.log()
+     // console.log()
       res.status(200).json(updatedCartItem);
     } catch (err) {
       res.status(500).json(err);
@@ -66,7 +67,7 @@ const cardItemId = ""
              cardItemId 
         })
   
-      console.log()
+     // console.log()
       res.render("products", { products });
     } catch (err) {
       res.status(500).json(err);
