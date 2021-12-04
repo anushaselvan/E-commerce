@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izimodal-1.6.0@1.6.1/css/iziModal.min.css">
-    <link rel="stylesheet" type="text/css" href="/iziModal.css">
+    {{!-- <link rel="stylesheet" type="text/css" href="/iziModal.css"> --}}
     <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
@@ -31,13 +31,7 @@
         {{/if}}
     </nav>
     <main>
-        <div id="modal-alert" 
-        class="iziModal hide" 
-             {{!-- data-iziModal-title="Welcome"  
-             data-iziModal-subtitle="Subtitle"   --}}
-             {{!-- data-iziModal-loop="true" --}}
-             {{!-- data-iziModal-group="grupo1" --}}
-             ></div>
+        <div id="modal-alert"  class="iziModal hide"></div>
 
         <div id="modal-custom" class="hide" data-iziModal-group="grupo1">
         <button data-iziModal-close="" class="icon-close">x</button>
@@ -56,14 +50,16 @@
             </form>
         </section>
         <section>
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
+            <form id="signup-form">
+            <input type="text" placeholder="Username" id="username-signup">
+            <input type="text" placeholder="Email" id="email-signup">
+            <input type="password" placeholder="Password" id="password-signup">
             {{!-- <label for="check"><input type="checkbox" name="checkbox" id="check" value="1"> I agree to the <u>Terms</u>.</label> --}}
             <footer>
-                <button class="submit">Create Account</button>            
+                <button type="submit" class="submit">Create Account</button>            
                 <button data-iziModal-close="">Cancel</button>
             </footer>
+            </form>
         </section>
     </div>
     {{{body}}}
