@@ -21,20 +21,23 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
     // we expect the body to have a cart id
-    console.log(`cartRoutes post hit`, req.body);
+    console.log(`cartRoutes post hit`, req.session);
     const productId = req.body;
-    console.log(productId+`checkoutpageerrordebuggingstatement`)
+    console.log(`checkoutpageerrordebuggingstatement`, productId)
     const userId = req.session.user_id
+    console.log(userId);
     try {
       
-        const newCartItem = await Cart.create({
-            userId,
-            productId,  
-        })
+        // const newCartItem = await Cart.create({
+        //     userId,
+        //     productId,  
+        //     logged_in: req.session.logged_in,
+        // })
   
-     // console.log()
-      res.status(200).json(newCartItem);
+     console.log(`try hit`)
+      // res.status(200).json(newCartItem);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   });
@@ -57,60 +60,60 @@ const cardItemId = ""
     }
   });
 
-  router.delete("/",  async (req, res) => {
-    // we expect the body to have a cart id
-    console.log(`cartRoutes hit`, req.body);
-    const cardItemId = ""
-    try {
+  // router.delete("/",  async (req, res) => {
+  //   // we expect the body to have a cart id
+  //   console.log(`cartRoutes hit`, req.body);
+  //   const cardItemId = ""
+  //   try {
       
-        const updatedCartItem = await Cart.destroy({
-             cardItemId 
-        })
+  //       const updatedCartItem = await Cart.destroy({
+  //            cardItemId 
+  //       })
   
-     // console.log()
-      res.render("products", { products });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+  //    // console.log()
+  //     res.render("products", { products });
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // });
 
   // we expect the body to have a cart id
-  console.log(`cartRoutes post hit`, req.body);
-  const productId = req.body;
-  const userId = req.session.user_id;
-  try {
-    const newCartItem = await Cart.create({
-      userId,
-      productId,
-    });
+//   console.log(`cartRoutes post hit`, req.body);
+//   const productId = req.body;
+//   const userId = req.session.user_id;
+//   try {
+//     const newCartItem = await Cart.create({
+//       userId,
+//       productId,
+//     });
 
-    console.log();
-    res.status(200).json(newCartItem);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     console.log();
+//     res.status(200).json(newCartItem);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-router.put("/", async (req, res) => {
-  // we expect the body to have a cart id
-  console.log(`cartRoutes hit`, req.body);
-  const cardItemId = "";
-  try {
-    const updatedCartItem = await Cart.update(
-      {
-        cardItemId,
-      },
-      {
-        ...req.body,
-      }
-    );
+// router.put("/", async (req, res) => {
+//   // we expect the body to have a cart id
+//   console.log(`cartRoutes hit`, req.body);
+//   const cardItemId = "";
+//   try {
+//     const updatedCartItem = await Cart.update(
+//       {
+//         cardItemId,
+//       },
+//       {
+//         ...req.body,
+//       }
+//     );
 
-    console.log();
-    res.status(200).json(updatedCartItem);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     console.log();
+//     res.status(200).json(updatedCartItem);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.delete("/", withAuth, async (req, res) => {
   // we expect the body to have a cart id
