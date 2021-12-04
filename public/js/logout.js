@@ -1,3 +1,19 @@
+function initIziAlert(title) {
+  $("#modal-alert").iziModal('destroy')
+  $("#modal-alert").iziModal({
+    title,
+    timeout: 1500,
+    timeoutProgressbar: true,
+    timeoutProgressbarColor: "rgba(255,255,255,0.5)",
+    width: 300,
+    onClosing: function () {
+      document.location.reload();
+    },
+    
+  });
+  $("#modal-alert").iziModal('open')
+}
+
 const logout = async () => {
   console.log(`clicked`);
     const response = await fetch('/api/users/logout', {
@@ -6,10 +22,11 @@ const logout = async () => {
     });
   
     if (response.ok) {
-      document.location.reload();
-      alert(`logged out`);
+      initIziAlert('Logged Out')
+      // document.location.reload();
+      // alert(`logged out`);
     } else {
-      alert(response.statusText);
+      initIziAlert(response.statusText);
     }
   };
   
