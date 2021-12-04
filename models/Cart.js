@@ -21,7 +21,11 @@ Cart.init(
     },
     user_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      // references: {
+      //   model: 'user',
+      //   key: 'name'
+      // }
     },
     product_id: {
       type: DataTypes.STRING,
@@ -33,7 +37,11 @@ Cart.init(
     },
     product_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      // references: {
+      //   model: 'product',
+      //   key: 'product_title',
+      // },
     },
     size: {
       type: DataTypes.STRING,
