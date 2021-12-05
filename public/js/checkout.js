@@ -14,7 +14,7 @@ const checkoutFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Failed to log in');
+        alert('checkout.js error');
       }
     };
   
