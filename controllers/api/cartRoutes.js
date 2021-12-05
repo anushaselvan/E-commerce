@@ -1,4 +1,4 @@
-const { Cart } = require("../../models");
+const { Cart, User, Product } = require("../../models");
 const withAuth = require("../../utils/auth");
 const router = require("express").Router();
 
@@ -21,23 +21,45 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
     // we expect the body to have a cart id
-    console.log(`cartRoutes post hit`, req.session);
+    // console.log(`cartRoutes post hit`, req);
     const productId = req.body;
     console.log(`checkoutpageerrordebuggingstatement`, productId)
     const userId = req.session.user_id
-    console.log(userId);
+    console.log(`Sessh`, req.session);
     try {
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ["password"] },
+        // include: [{ model: Product}],
+      });
+
+      const productData = await Product.findByPk(req.body.productId, {})
       
-        // const newCartItem = await Cart.create({
-        //     userId,
-        //     productId,  
-        //     logged_in: req.session.logged_in,
-        // })
-  
-     console.log(`try hit`)
-      // res.status(200).json(newCartItem);
+      const cartData = await Cart.findByPk(fromsomewhere, {})
+
+      const user = userData.get({plain:true})
+      const cart = cartData.get({plain:true})
+      const product = productData.get({plain:true})
+      
+      // cartId&sessionId + userID
+      // cartId + productId * X
+      // if (user_id && product_id) {
+      //   update
+      // } else {
+      const newCartItem = await Cart.create({
+            user_id: user.id,
+            user_name: user.name,
+            product_id: product.id,  
+            product_name: product.product_title,
+            size: req.body.size,
+            product_quantity: req.body.quantity,
+            // filename: product.filename,
+            // logged_in: req.session.logged_in,
+          })
+          
+          console.log(`new cart item`, newCartItem)
+      res.status(200).json(newCartItem);//}
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       res.status(500).json(err);
     }
   });
