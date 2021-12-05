@@ -1,22 +1,32 @@
-# E-commerce-Group-Project
+<h1>Hawaiki Shop </h1>
 
-Team: Rau Manukau, Doss Anania, Mariane Thomson, Anusha Selvan
+<br>
 
-Objective:
-To create a simple E-commerce application to sell preview and sell products online.
+## Description
+A simple E-commerce application for users to purchase business merchandise.
 
-    
-Basic outline:
-- homepage
-- signup form/ login
-- product inventory
-- checkout form
-- user confirmation (preferably email confirmation)
-- order/ purchase history
+## Table of Contents
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [License](#License)
+  - [Contribution](#Contribution)
+  - [Tests](#Tests) 
+  - [Questions](#Questions)
+  
+## Installation
+  Clone the repository and install node and the following npm modules - Express, mysql2, sequelize, dotenv, bcrypt,connect-session-sequelize, express-handlebars, express-session, handlebars, izimodal, jquery.
 
-Extras:
-- admin and user seperate features
-- saved/liked products
+## Usage
+ - Run the application using the command- node index.js and   follow the prompts. 
+ - Check out this video for more details.
+ - Some screenshots of the application-
 
+## Contribution
+   Submit a Pull Request to collaborate!
 
-Library - In research phase - not finalised yet.
+## Questions
+  Contact me for further details
+
+  [Anusha](https://github.com/anushaselvan)<br>
+  [Doss](https://github.com/gitme-waffles)<br>
+  [Rua](https://github.com/rmnk-nz)
