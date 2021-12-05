@@ -1,24 +1,21 @@
-        <form id='addToCartForm'>
-
+<form id='addToCartForm'>
 <h1 id="productId" class="shopTitle" data-id="{{id}}">{{product_title}}</h1>
 <div class="itemDiv">
-        <img class="itemImg" src="/images/{{filename}}" alt="{{filename}}">
+    <img class="itemImg" src="/images/{{filename}}" alt="{{filename}}">
     <div class="itemDescription">
-        <h2 class="price">${{price}}</h2>
-        <h3>Description</h3>
-        <p>{{description}}</p>
-        <label for="quantity">Quantity</label>
-
-<input type="number" id="quantity" name="quantity"
-       min="1" max="100" value='1'><br>
-       Size
-<select id='size' name='size'>
-   <option value="S">S</option>
-    <option value="M">M</option>
-    <option value="L">L</option>
-</select><br>
+    <h2 class="price">${{price}}</h2>
+    <h3>Description</h3>
+    <p>{{description}}</p>
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" min="1" max="100" value='1'><br><br>
+    Size<select id='size' name='size'>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+        </select><br><br>
     <button type='submit' id='addToCartBtn'>Add to Cart </button>
-</form>
     </div>    
-</div>
+    </div>
+</form>
+
 <script src="/js/product.js"></script>
