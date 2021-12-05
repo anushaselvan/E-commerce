@@ -82,61 +82,6 @@ const cardItemId = ""
     }
   });
 
-  // router.delete("/",  async (req, res) => {
-  //   // we expect the body to have a cart id
-  //   console.log(`cartRoutes hit`, req.body);
-  //   const cardItemId = ""
-  //   try {
-      
-  //       const updatedCartItem = await Cart.destroy({
-  //            cardItemId 
-  //       })
-  
-  //    // console.log()
-  //     res.render("products", { products });
-  //   } catch (err) {
-  //     res.status(500).json(err);
-  //   }
-  // });
-
-  // we expect the body to have a cart id
-//   console.log(`cartRoutes post hit`, req.body);
-//   const productId = req.body;
-//   const userId = req.session.user_id;
-//   try {
-//     const newCartItem = await Cart.create({
-//       userId,
-//       productId,
-//     });
-
-//     console.log();
-//     res.status(200).json(newCartItem);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.put("/", async (req, res) => {
-//   // we expect the body to have a cart id
-//   console.log(`cartRoutes hit`, req.body);
-//   const cardItemId = "";
-//   try {
-//     const updatedCartItem = await Cart.update(
-//       {
-//         cardItemId,
-//       },
-//       {
-//         ...req.body,
-//       }
-//     );
-
-//     console.log();
-//     res.status(200).json(updatedCartItem);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.delete("/", withAuth, async (req, res) => {
   // we expect the body to have a cart id
   console.log(`cartRoutes hit`, req.body);
@@ -162,10 +107,6 @@ router.post("/checkout", async (req, res) => {
         userId,
       },
     });
-
-    // TODO: send email
-    // nodemailer // recommend
-    // sendgrid
 
     const deletedCartItems = await Cart.destroy({
       where: {
