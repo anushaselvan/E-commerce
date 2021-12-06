@@ -20,67 +20,99 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    // we expect the body to have a cart id
-    // console.log(`cartRoutes post hit`, req);
-    const productId = req.body;
-    console.log(`checkoutpageerrordebuggingstatement`, productId)
-    const userId = req.session.user_id
-    console.log(`Sessh`, req.session);
-    try {
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ["password"] },
-        // include: [{ model: Product}],
+  // we expect the body to have a cart id
+  // console.log(`cartRoutes post hit`, req);
+  const productId = req.body;
+  console.log(`checkoutpageerrordebuggingstatement`, productId);
+  const userId = req.session.user_id;
+  console.log(`Sessh`, req.session);
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Cart }],
+      attributes: { exclude: ["password"] },
+      // include: [{ model: Product}],
+    });
+    const productData = await Product.findByPk(req.body.productId, {});
+
+    // const cartData = await Cart.findByPk(fromsomewhere, {})
+
+    const user = userData.get({ plain: true });
+    // const cart = cartData.get({plain:true})
+    const product = productData.get({ plain: true });
+    console.log(`log USER`, user);
+    // cartId&sessionId + userID
+    // cartId + productId * X
+
+    // const found = array1.find(element => element == product_id && size) {
+    // if (user_id && product_id && size) {
+    // get current qty in db
+    // add new qty to current qty
+    //   update qty in db
+    // } else {
+
+    const foundCartItem = user.carts.find(
+      (element) =>
+        element.product_id == req.body.productId &&
+        element.size == req.body.size
+    );
+    
+    let cartItem;
+    if (!foundCartItem) {
+      console.log('cartItemNewRow');
+      cartItem = await Cart.create({
+        user_id: user.id,
+        user_name: user.name,
+        product_id: product.id,
+        product_name: product.product_title,
+        size: req.body.size,
+        product_quantity: req.body.quantity,
+        // filename: product.filename,
+        // logged_in: req.session.logged_in,
       });
-
-      const productData = await Product.findByPk(req.body.productId, {})
-      
-      const cartData = await Cart.findByPk(fromsomewhere, {})
-
-      const user = userData.get({plain:true})
-      const cart = cartData.get({plain:true})
-      const product = productData.get({plain:true})
-      
-      // cartId&sessionId + userID
-      // cartId + productId * X
-      // if (user_id && product_id) {
-      //   update
-      // } else {
-      const newCartItem = await Cart.create({
-            user_id: user.id,
-            user_name: user.name,
-            product_id: product.id,  
-            product_name: product.product_title,
-            size: req.body.size,
-            product_quantity: req.body.quantity,
-            // filename: product.filename,
-            // logged_in: req.session.logged_in,
-          })
-          
-          console.log(`new cart item`, newCartItem)
-      res.status(200).json(newCartItem);//}
-    } catch (err) {
-      // console.log(err);
-      res.status(500).json(err);
+    } else {
+      console.log(`update row`);
+      cartItem = await Cart.update(
+        {
+          product_quantity:
+            parseInt(req.body.quantity) +
+            parseInt(foundCartItem.product_quantity),
+        },
+        {
+          where: {
+            id: foundCartItem.id,
+          },
+        }
+      );
     }
-  });
 
-  router.put("/", async (req, res) => {
-    // we expect the body to have a cart id
-    console.log(`cartRoutes hit`, req.body);
-const cardItemId = ""
-    try {
-        const updatedCartItem = await Cart.update({
-            cardItemId
-        }, {
-            ...req.body
-        })
-  
-     // console.log()
-      res.status(200).json(updatedCartItem);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+    console.log(`new cart item`, cartItem);
+    res.status(200).json(cartItem); //}
+  } catch (err) {
+    // console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.put("/", async (req, res) => {
+  // we expect the body to have a cart id
+  console.log(`cartRoutes hit`, req.body);
+  const cardItemId = "";
+  try {
+    const updatedCartItem = await Cart.update(
+      {
+        cardItemId,
+      },
+      {
+        ...req.body,
+      }
+    );
+
+    // console.log()
+    res.status(200).json(updatedCartItem);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.delete("/", withAuth, async (req, res) => {
   // we expect the body to have a cart id
