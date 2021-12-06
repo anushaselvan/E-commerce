@@ -16,13 +16,11 @@
 </head>
 <body>
     <nav>
-        <a href="/">Hawaiki</a> 
-        <a href="/products">Products</a>    
-        {{!-- <a href="/login" class="trigger" data-izimodal-open="#modal">login</a> --}}
-        <a href="/checkout">Checkout</a>    
-        
         {{!-- <a href="/products">Shop</a> --}}
-        <a href="/"><img src="/images/Hawaikilogo.png" alt="home-icon" height="150" width="150"></a>     
+        <a href="/"><img src="/images/Hawaikilogo.png" alt="home-icon" height="150" width="150"></a> 
+          {{!-- <a href="/login" class="trigger" data-izimodal-open="#modal">login</a> --}}
+          <a href="/products">Products</a>    
+        <a href="/checkout">Checkout</a>       
         {{#if logged_in}}
         <a href="#" id="logout">Logout</a>
         {{else}}
