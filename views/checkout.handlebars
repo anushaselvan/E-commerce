@@ -1,7 +1,7 @@
 <div>
+  <h1 class="shopTitle">Cart</h1>
     <div class="checkoutHeader">
-        <h1 >Cart</h1>
-        <a href="/products"><h2>Continue Shopping</h2></a>
+        <a class="continueShop" href="/products"><h2>Continue Shopping</h2></a>
     </div>
     <form class="checkoutForm">
     <table>
@@ -12,7 +12,29 @@
       <th>Quantity</th>
       <th>Total</th>
     </tr>
-    {{#each products as |product|}}
+
+    <tr>
+      <td>  <img class="checkoutImg" src="/images/hawaiki-logo-kids-tee.jpg" alt="hawaiki-logo-kids-tee}"></td>
+      <td class="checkoutInfo">Hawaiki Logo - Kids Tee - Moss</td>
+      <td class="checkoutInfo">$30.00</td>
+          <td><input type="number" id="quantity" name="quantity" min="1" max="100" value='2'>
+          <button id="removeBtn">Remove</button>
+          </td>
+      <td id="total">$60</td>
+    </tr>
+
+
+    <tr>
+      <td>  <img class="checkoutImg" src="/images/hawaiki-logo-crew-back.jpg" alt="hawaiki-logo-kids-tee}"></td>
+      <td class="checkoutInfo">Hawaiki Logo - Crew - Grey</td>
+      <td class="checkoutInfo">$80.00</td>
+          <td><input type="number" id="quantity" name="quantity" min="1" max="100" value='1'>
+          <button id="removeBtn">Remove</button>
+          </td>
+      <td id="total">$80</td>
+    </tr>
+
+    {{!-- {{#each products as |product|}}
     <tr>
       <td>  <img src="/images/{{product.filename}}" alt="{{product.filename}}"></td>
       <td>{{product.product_title}}</td>
@@ -22,13 +44,13 @@
           </td>
       <td id="total">{{total}}</td>
     </tr>
-    {{/each}}
+    {{/each}} --}}
   <tr style="border-bottom: white;">
     <td>  </td>
     <td>  </td>
     <td>  </td>
     <td><h3>Subtotal:</h3></td>
-    <td>{{Subtotal}}</td>
+    <td class="subtotal">$140.00</td>
   </tr>
 </table>
 <div class="btnGroup">
