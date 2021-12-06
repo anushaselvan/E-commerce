@@ -26,7 +26,6 @@ Product.init(
     filename: {
         type: DataTypes.STRING,
         allowNull: false
-
     },
     category_id: {
         type: DataTypes.INTEGER,
@@ -36,6 +35,10 @@ Product.init(
           key: 'id',
         }
     },
+    // size: {
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    // },
   },
   {
     sequelize,
