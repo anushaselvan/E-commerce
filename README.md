@@ -17,8 +17,7 @@ A simple E-commerce application for users to purchase business merchandise.
   Clone the repository and install node and the following npm modules - Express, mysql2, sequelize, dotenv, bcrypt,connect-session-sequelize, express-handlebars, express-session, handlebars, izimodal, jquery.
 
 ## Usage
- - Run the application using the command- node index.js and   follow the prompts. 
- - Check out this video for more details.
+ - Run the application using the command- node index.js and follow the prompts. 
  - Some screenshots of the application-
 
 ## Contribution

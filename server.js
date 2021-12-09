@@ -11,6 +11,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create();
+const aws = require('aws-sdk');
+
+let s3 = new aws.S3({
+  accessKeyId: process.env.S3_KEY,
+  secretAccessKey: process.env.S3_SECRET
+});
 
 // Session parameters
 const sess = {
