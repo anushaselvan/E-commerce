@@ -18,6 +18,7 @@ A simple E-commerce application for users to purchase business merchandise.
 
 ## Usage
  - Run the application using the command- node index.js and follow the prompts. 
+ - Link to the deployed version - [Heroku](https://hawaikishop.herokuapp.com/)<br>
  - Some screenshots of the application-
 
 ## Contribution
