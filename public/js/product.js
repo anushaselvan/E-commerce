@@ -45,7 +45,7 @@ const addToCartFormHandler = async (event) => {
     const quantity = document.querySelector('#quantity').value.trim();
     
     if (size && quantity) {
-      const response = await fetch(`/api/cart`, {
+      const response = await fetch(`/api/cart/`, {
         method: 'POST',
         body: JSON.stringify({ productId, size, quantity }),
         headers: { 'Content-Type': 'application/json' },

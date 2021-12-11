@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     const user = userData.get({ plain: true });
     // const cart = cartData.get({plain:true})
     const product = productData.get({ plain: true });
-    console.log(`log USER`, user);
+    console.log(`product USER`, product, user);
     // cartId&sessionId + userID
     // cartId + productId * X
 
@@ -52,13 +52,14 @@ router.post("/", async (req, res) => {
 
     const foundCartItem = user.carts.find(
       (element) =>
-        element.product_id == req.body.productId &&
-        element.size == req.body.size
+        element.product_id === req.body.productId &&
+        element.size === req.body.size
     );
     
     let cartItem;
     if (!foundCartItem) {
       console.log('cartItemNewRow');
+      console.log(Cart);
       cartItem = await Cart.create({
         user_id: user.id,
         user_name: user.name,

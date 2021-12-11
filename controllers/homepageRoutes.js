@@ -1,4 +1,5 @@
-const {Product, Category} = require("../models");
+const {Product, Category, Cart} = require("../models");
+
 
 const router = require("express").Router();
 
@@ -59,10 +60,19 @@ router.get("/products/:id", async (req, res) => {
 });
 
 
-router.get("/checkout", (req, res) => {
+router.get("/checkout", async(req, res) => {
   try {
+    const cartData = await Cart.findAll(
+      { //where: {user_id:req.session.user_id}
+        //include : {model: [Product], attributes:["product_title", "filename", "price"]},
+
+      }
+    );
+    const cart = cartData.map((product) => product.get({ plain: true }));
+    console.log(cart);
     res.render("checkout", {
-      logged_in: req.session.logged_in,
+      logged_in: req.session.logged_in
+      //products:cart
     });
   } catch (err) {
     res.status(500).json(err);

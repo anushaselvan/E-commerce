@@ -12,8 +12,7 @@
       <th>Quantity</th>
       <th>Total</th>
     </tr>
-
-    <tr>
+{{!--    <tr>
       <td>  <img class="checkoutImg" src="/images/hawaiki-logo-kids-tee.jpg" alt="hawaiki-logo-kids-tee}"></td>
       <td class="checkoutInfo">Hawaiki Logo - Kids Tee - Moss</td>
       <td class="checkoutInfo">$30.00</td>
@@ -32,25 +31,25 @@
           <button id="removeBtn">Remove</button>
           </td>
       <td id="total">$80</td>
-    </tr>
+    </tr>--}}
 
-    {{!-- {{#each products as |product|}}
+    {{#each products as |product|}}
     <tr>
       <td>  <img src="/images/{{product.filename}}" alt="{{product.filename}}"></td>
-      <td>{{product.product_title}}</td>
+      <td>{{product.product_name}}</td>
       <td>{{product.price}}</td>
           <td><input type="number" id="quantity" name="quantity" min="1" max="100" value='{{product.product_quantity}}'>
           <button id="removeBtn">Remove</button>
           </td>
       <td id="total">{{total}}</td>
     </tr>
-    {{/each}} --}}
+    {{/each}} 
   <tr style="border-bottom: white;">
     <td>  </td>
     <td>  </td>
     <td>  </td>
     <td><h3>Subtotal:</h3></td>
-    <td class="subtotal">$140.00</td>
+    <td class="subtotal"></td>
   </tr>
 </table>
 <div class="btnGroup">
